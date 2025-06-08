@@ -5,6 +5,6 @@ app = FastAPI()
 def read_root():
     return {1: "Hello, World"}
 
-@app.get("/pedro")
+@app.get("/filosofo-pedro")
 def read_root():
     return {"Pro avião voar ele teve que planar"}

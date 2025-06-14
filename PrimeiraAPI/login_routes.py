@@ -3,4 +3,4 @@ login_router = APIRouter(prefix="/login", tags=["login"])
 
 @login_router.get("/")
 async def login():
-    return {"Mensagem": "Rota funcionando", "Status": True}
+    return {"Mensagem": "Rota funcionando.", "Status": True}

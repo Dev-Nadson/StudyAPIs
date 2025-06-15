@@ -28,11 +28,11 @@ class Usuario(base):
 class pedido(base):
     __tablename__ = "pedidos"
 
-    STATUS_PEDIDOS = (("PENDENTE", "PENDENTE"),("CANCELADO", "CANCELADO"),("FINALIZADO", "FINALIZADO"))
+    # STATUS_PEDIDOS = (("PENDENTE", "PENDENTE"),("CANCELADO", "CANCELADO"),("FINALIZADO", "FINALIZADO"))
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     usuario = Column("usuario", ForeignKey("usuarios.id"), nullable=True)
-    status = Column("status", ChoiceType(choices=STATUS_PEDIDOS), nullable=True)
+    status = Column("status", String, nullable=True)
     preco = Column("preco", Float, nullable=True)
     #itens =
 

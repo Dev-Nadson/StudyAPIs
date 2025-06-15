@@ -1,8 +1,11 @@
 from sqlalchemy import create_engine, Column, String, Integer, Float, Boolean, ForeignKey
 from sqlalchemy.orm import declarative_base
 from sqlalchemy_utils import ChoiceType
+import os
 
-database = create_engine("sqlite:///PrimeiraAPI/database/banco.db")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, "database", "banco.db")
+database = create_engine(f"sqlite:///{db_path}")
 base = declarative_base()
 
 class Usuario(base):

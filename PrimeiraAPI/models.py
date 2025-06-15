@@ -12,7 +12,7 @@ class Usuario(base):
     __tablename__ = "usuarios"
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    nome = Column("name", String, nullable=True)
+    nome = Column("nome", String, nullable=True)
     email = Column("email", String, nullable=True)
     senha = Column("senha", String, nullable=True)
     ativo = Column("ativo", Boolean, nullable=True)

@@ -1,13 +1,11 @@
 from sqlalchemy import create_engine, Column, String, Integer, Float, Boolean, ForeignKey
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy_utils import ChoiceType
 
 database = create_engine("sqlite:///PrimeiraAPI/database/banco.db")
-SessionLocal = sessionmaker(bind=database)
-session = SessionLocal()
 base = declarative_base()
 
-class usuario(base):
+class Usuario(base):
     __tablename__ = "usuarios"
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)

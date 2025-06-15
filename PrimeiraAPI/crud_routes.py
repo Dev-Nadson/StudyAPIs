@@ -12,7 +12,7 @@ async def pedidos():
 
 @crud_router.post("/pedido")
 async def criar_pedido(pedido_schema:PedidoSchema, session: session = Depends(pegar_sessao)):
-    novo_pedido = pedido(usuario=pedido_schema.id_usuario)
+    novo_pedido = pedido(usuario=pedido_schema.usuario)
     session.add(novo_pedido)
     session.commit()
     return {"mensagem": f"Pedido Criado com sucesso! ID: {novo_pedido.id}"}

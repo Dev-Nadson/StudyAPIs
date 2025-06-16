@@ -14,3 +14,9 @@ class PedidoSchema(BaseModel):
     usuario: int
     class Config:
         from_attributes = True
+
+class AutenticacaoSchema(BaseModel):
+    email: str
+    senha: int
+    class Config:
+        from_attributes = True

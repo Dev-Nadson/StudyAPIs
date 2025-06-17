@@ -10,6 +10,14 @@ def criar_token(id_usuario):
     token = f"12345{id_usuario}"
     return token
 
+def autenticar_usuario(email, senha, session):
+    usuario = session.query(Usuario).filter(Usuario.email==email).first()
+    if not usuario:
+        return False
+    elif bcrypt_context.verify(senha, usuario.senha):
+        return False
+    return usuario
+
 @login_router.get("/")
 async def home():
     return {"Mensagem": "Rota funcionando.", "Status": True}
@@ -29,9 +37,9 @@ async def criar_conta(usuario_schema: UsuarioSchema, session: Session = Depends(
 #Iniciando a autenticação do login vis Json Web Token
 @login_router.post("/autenticacao")
 async def autenticacao(autenticacao_schema: AutenticacaoSchema, session: Session = Depends(pegar_sessao)):
-    usuario = session.query(Usuario).filter(Usuario.email==autenticacao_schema.email).first()
+    usuario = autenticar_usuario(email=autenticacao_schema.email, senha=autenticacao_schema.senha, session=session)
     if not usuario:
-        raise HTTPException(status_code=400, detail="Usuário não encontrado")
+        raise HTTPException(status_code=400, detail="Usuário não encontrado ou credenciais inválidas")
     else:
         access_token = criar_token(usuario.id)
         return {"access_token": access_token, "token_type": "Bearer"}

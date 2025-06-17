@@ -1,5 +1,5 @@
 from models import database
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import sessionmaker
 from passlib.context import CryptContext
 from dotenv import load_dotenv
 import os

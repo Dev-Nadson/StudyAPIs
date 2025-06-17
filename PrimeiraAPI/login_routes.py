@@ -48,3 +48,7 @@ async def autenticacao(autenticacao_schema: AutenticacaoSchema, session: Session
         access_token = criar_token(usuario.id)
         refresh_token = criar_token(id_usuario = usuario.id, duracao_token = timedelta(days=7))
         return {"access_token": access_token, "Refresh_token": refresh_token, "token_type": "Bearer"}
+    
+@login_router.get("/refresh")
+async def use_refresh_token():
+    pass

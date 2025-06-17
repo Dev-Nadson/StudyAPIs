@@ -17,6 +17,6 @@ class PedidoSchema(BaseModel):
 
 class AutenticacaoSchema(BaseModel):
     email: str
-    senha: int
+    senha: str
     class Config:
         from_attributes = True

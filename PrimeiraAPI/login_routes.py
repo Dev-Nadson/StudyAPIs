@@ -34,3 +34,4 @@ async def autenticacao(autenticacao_schema: AutenticacaoSchema, session: Session
         raise HTTPException(status_code=400, detail="Usuário não encontrado")
     else:
         access_token = criar_token(usuario.id)
+        return {"access_token": access_token, "token_type": "Bearer"}

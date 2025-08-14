@@ -1,9 +1,16 @@
 import { fastify } from 'fastify'
 import { DatabaseMemory } from './database-memory.js'
-const server = fastify()
 
-server.post('/tasks', () => {
-    return "Hello World!"
+const server = fastify()
+const db = new DatabaseMemory()
+
+server.post('/tasks', (req, reply) => {
+    db.create({
+        title: 'Corrigir bugs',
+        description: 'Corrigir bugs na aplicação'
+    })
+
+    return reply.status(201).send()
 })
 
 server.get('/', () => {

@@ -5,16 +5,19 @@ const server = fastify()
 const db = new DatabaseMemory()
 
 server.post('/tasks', (req, reply) => {
+    const { title, description } = req.body
+
     db.create({
-        title: 'Corrigir bugs',
-        description: 'Corrigir bugs na aplicação'
+        title: title,
+        description: description
     })
 
     return reply.status(201).send()
 })
 
 server.get('/', () => {
-    return "Hello World!"
+    const videos = db.list()
+    return videos
 })
 
 server.put('/tasks/:id', () => {

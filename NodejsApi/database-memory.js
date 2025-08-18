@@ -4,7 +4,7 @@ export class DatabaseMemory {
     #tasks = new Map() //Map para poder fazer a conexão entre ID e Tarefa
 
     async list() {
-        return this.#tasks.values()
+        return Array.from(this.#tasks.values())
     }
 
     async create(task) {

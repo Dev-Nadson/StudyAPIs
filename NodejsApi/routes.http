@@ -1,1 +1,12 @@
 POST http://localhost:3333/tasks
+Content-Type: application/json
+
+{
+    "title": "Corrigir bugs",
+    "description": "Corrigir os bugs na aplicação"
+}
+
+###
+
+GET http://localhost:3333/
+

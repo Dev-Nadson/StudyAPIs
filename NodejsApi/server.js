@@ -16,12 +16,20 @@ server.post('/tasks', (req, reply) => {
 })
 
 server.get('/', () => {
-    const videos = db.list()
-    return videos
+    const tasks = db.list()
+    return tasks
 })
 
-server.put('/tasks/:id', () => {
-    return "Hello World!"
+server.put('/tasks/:id', (req, reply) => {
+    const taskID = req.params.id
+    const { title, description } = req.body
+
+    db.update(taskID, {
+        title: title,
+        description: description
+    })
+
+    return reply.status(200).send
 })
 
 server.delete('/tasks/:id', () => {

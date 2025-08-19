@@ -29,7 +29,7 @@ server.put('/tasks/:id', (req, reply) => {
         description: description
     })
 
-    return reply.status(200).send
+    return reply.send()
 })
 
 server.delete('/tasks/:id', () => {

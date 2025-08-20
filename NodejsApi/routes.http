@@ -2,11 +2,24 @@ POST http://localhost:3333/tasks
 Content-Type: application/json
 
 {
-    "title": "Corrigir bugs",
+    "title": "Corrigir bugs 2",
     "description": "Corrigir os bugs na aplicação"
 }
 
 ###
 
-GET http://localhost:3333/
+GET http://localhost:3333/?search=Feat
 
+###
+
+PUT http://localhost:3333/tasks/6b2ecce6-2b50-4a25-acae-c3e1c1c056cd
+Content-Type: application/json
+
+{
+    "title": "Corrigir bugs 3",
+    "description": "Corrigir os bugs na aplicação"
+}
+
+###
+
+DELETE http://localhost:3333/tasks/210be096-92c9-43eb-9fbe-5a36e257b99a

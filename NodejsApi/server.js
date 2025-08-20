@@ -15,8 +15,11 @@ server.post('/tasks', (req, reply) => {
     return reply.status(201).send()
 })
 
-server.get('/', () => {
-    const tasks = db.list()
+server.get('/', (req) => {
+    const search = req.query.search
+
+    console.log(search)
+    const tasks = db.list(search)
     return tasks
 })
 
@@ -32,8 +35,11 @@ server.put('/tasks/:id', (req, reply) => {
     return reply.send()
 })
 
-server.delete('/tasks/:id', () => {
-    return "Hello World!"
+server.delete('/tasks/:id', (req, reply) => {
+    const taskID = req.params.id
+    db.delete(taskID)
+
+    return reply.status(204).send()
 })
 server.listen({
     port: 3333,

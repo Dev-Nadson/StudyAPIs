@@ -18,7 +18,12 @@ export class DatabasePostgres {
         await sql`insert into tasks (id, title, description) VALUES (${taskID}, ${title}, ${description})`
     }
     async update(id, task) {
+        const { title, description } = task
+
+        await sql`update tasks set title = ${title}, description = ${description} WHERE id = ${id}`
     }
     async delete(id) {
+        await sql`delete from tasks WHERE id = ${id}`
+
     }
 }

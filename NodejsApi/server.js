@@ -23,11 +23,11 @@ server.get('/', async (req) => {
     return tasks
 })
 
-server.put('/tasks/:id', (req, reply) => {
+server.put('/tasks/:id', async (req, reply) => {
     const taskID = req.params.id
     const { title, description } = req.body
 
-    db.update(taskID, {
+    await db.update(taskID, {
         title: title,
         description: description
     })
@@ -35,9 +35,9 @@ server.put('/tasks/:id', (req, reply) => {
     return reply.send()
 })
 
-server.delete('/tasks/:id', (req, reply) => {
+server.delete('/tasks/:id', async (req, reply) => {
     const taskID = req.params.id
-    db.delete(taskID)
+    await db.delete(taskID)
 
     return reply.status(204).send()
 })

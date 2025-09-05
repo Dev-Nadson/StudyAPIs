@@ -24,6 +24,5 @@ export class DatabasePostgres {
     }
     async delete(id) {
         await sql`delete from tasks WHERE id = ${id}`
-
     }
 }

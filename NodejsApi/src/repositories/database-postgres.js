@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto'
-import sql from './db.js'
+import sql from '../config/db.js'
 
 export class DatabasePostgres {
     async list(search) {

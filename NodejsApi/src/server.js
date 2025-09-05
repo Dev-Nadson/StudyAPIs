@@ -1,4 +1,4 @@
-import { fastify } from 'fastify'
+/*import { fastify } from 'fastify'
 import { DatabasePostgres } from './database-postgres.js'
 
 const server = fastify()
@@ -43,4 +43,16 @@ server.delete('/tasks/:id', async (req, reply) => {
 })
 server.listen({
     port: 3333,
+})*/
+
+import { buildApp } from './app.js'
+
+const app = await buildApp()
+
+app.listen({ port: 3333 }, (err, address) => {
+    if (err) {
+        console.error(err)
+        process.exit(1)
+    }
+    console.log(`🚀 Servidor rodando em ${address}`)
 })

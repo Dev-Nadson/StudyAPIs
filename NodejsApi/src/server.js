@@ -56,4 +56,3 @@ app.listen({ port: 3333 }, (err, address) => {
     }
     console.log(`🚀 Servidor rodando em ${address}`)
 })
-
